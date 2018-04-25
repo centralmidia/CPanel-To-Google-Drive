@@ -1,0 +1,45 @@
+Instalei o MUTT
+
+E criei a rotina de backup como a seguir:
+
+#!/bin/sh
+## /fazer backup site
+
+/scripts/pkgacct meuteste
+/scripts/pkgacct sf
+
+# upload to google drive
+gdrive upload cpmove-meuteste.tar.gz
+gdrive upload cpmove-sf.tar.gz
+
+# remove the original tar
+rm -rf cpmove-meuteste.tar.gz
+rm -rf cpmove-sf.tar.gz
+
+# Nome do Remetente
+set realname="Servidor Linux Cebraic - Virtua Server"
+
+# Email do Remetente
+set from="geral@portalrondonia.com.br;"
+
+# Usuario da conta de email
+set my_user=geral@portalrondonia.com.br
+
+# Senha da conta de email
+set my_pass='Zx996655##'
+
+# Autenticacao no servidor smtp de email, nesse caso do gmail.com
+set smtp_url=smtps://$:$my_pass@smtp.gmail.com
+
+# Camada de segurança, requerida pelo gmail.com
+set ssl_force_tls = yes
+
+exit 0
+
+Salvei-o como bkp.sh
+
+
+Depois executei ./bkp.sh
+
+
+Funcionou quase perfeito, mas não me enviou o email
